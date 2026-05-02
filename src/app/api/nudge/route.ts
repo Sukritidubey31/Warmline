@@ -4,6 +4,15 @@ import { embedText, searchSimilar } from '@/lib/embeddings'
 import { Contact } from '@/types'
 import { getUserId } from '@/lib/getUser'
 
+function extractJSON(text: string): string {
+  const firstBrace = text.indexOf('{')
+  const lastBrace = text.lastIndexOf('}')
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    return text.slice(firstBrace, lastBrace + 1)
+  }
+  return text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+}
+
 async function callWithRetry(fn: () => Promise<any>, retries = 3, delay = 5000) {
   for (let i = 0; i < retries; i++) {
     try {
@@ -220,8 +229,8 @@ Start with { and end with }. No other text.`
     // 8. Parse Claude's response — use last text block
     const textBlock = response.content.filter((b: any) => b.type === 'text').pop()
     const raw = textBlock?.type === 'text' ? (textBlock as any).text : ''
-    const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
-    const parsed = JSON.parse(cleaned)
+    const clean = extractJSON(raw)
+    const parsed = JSON.parse(clean)
 
     const nudgeMessage: string = parsed.nudgeMessage
     const article = {

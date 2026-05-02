@@ -80,7 +80,13 @@ export default function ResultView({ result, contact, onAddAnother, onViewTracke
         </ResultCard>
 
         {/* Article */}
-        {result.article && (
+        {result.article &&
+        result.article.url &&
+        result.article.url !== '#' &&
+        result.article.title &&
+        result.article.title !== '' &&
+        result.article.title !== 'Unable to locate specific article' &&
+        result.article.title !== 'No article found' ? (
           <ResultCard label="📰 share this article">
             <a
               href={result.article.url}
@@ -95,7 +101,7 @@ export default function ResultView({ result, contact, onAddAnother, onViewTracke
               <p className="text-xs font-sans mt-2" style={{ color: '#9a7060' }}>{result.article.reason}</p>
             )}
           </ResultCard>
-        )}
+        ) : null}
       </div>
 
       {/* Actions */}

@@ -4,6 +4,15 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { embedText } from '@/lib/embeddings'
 import { getUserId } from '@/lib/getUser'
 
+function extractJSON(text: string): string {
+  const firstBrace = text.indexOf('{')
+  const lastBrace = text.lastIndexOf('}')
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    return text.slice(firstBrace, lastBrace + 1)
+  }
+  return text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+}
+
 async function callWithRetry(fn: () => Promise<any>, retries = 3, delay = 5000) {
   for (let i = 0; i < retries; i++) {
     try {
@@ -44,8 +53,8 @@ You MUST respond with ONLY a valid JSON object. No introduction, no explanation,
     )
 
     const textBlock = response.content.filter((b: any) => b.type === 'text').pop()
-    const raw = textBlock?.type === 'text' ? (textBlock as any).text : ''
-    const clean = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()
+    const text = textBlock?.type === 'text' ? (textBlock as any).text : ''
+    const clean = extractJSON(text)
 
     try {
       const parsed = JSON.parse(clean)
@@ -91,13 +100,22 @@ You MUST respond with ONLY a valid JSON object. No introduction, no explanation,
       return Response.json({
         ...parsed,
         article: {
-          title: parsed.articleTitle || 'No relevant article found',
-          url: parsed.articleUrl || '#',
-          reason: `Shared because you talked about ${talked_about}`,
+          title: parsed.articleTitle || parsed.article?.title || '',
+          url: parsed.articleUrl || parsed.article?.url || '',
+          reason:
+            parsed.article?.reason ||
+            `Shared because you talked about ${talked_about}`,
         },
       })
     } catch {
-      return Response.json({ error: 'Failed to parse AI response' }, { status: 500 })
+      console.error('JSON parse failed:', text)
+      return Response.json({
+        message: text.slice(0, 500),
+        giveFirst: 'Share something relevant from your conversation.',
+        timeline: 'Follow up within a week while fresh.',
+        insight: 'Personal connections matter more than perfect timing.',
+        article: { title: '', url: '', reason: '' },
+      })
     }
   } catch {
     return Response.json({ error: 'Something went wrong' }, { status: 500 })
