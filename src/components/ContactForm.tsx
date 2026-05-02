@@ -25,7 +25,7 @@ const timeAgoOptions = [
 
 const samples = [
   {
-    name: 'Sarah Chen',
+    name: 'Maya',
     where_met: 'ProductCon conference',
     talked_about:
       'Her transition from software engineering to product management at Stripe, we bonded over Cornell and the challenge of stakeholder alignment',
@@ -37,7 +37,7 @@ const samples = [
     intent: 'job' as Intent,
   },
   {
-    name: 'Marcus Williams',
+    name: 'Rohan',
     where_met: 'LinkedIn cold outreach',
     talked_about:
       'His experience building 0-to-1 products at early stage startups, we talked about finding PMF and his recent raise',
@@ -48,7 +48,7 @@ const samples = [
     intent: 'mentorship' as Intent,
   },
   {
-    name: 'Priya Patel',
+    name: 'Lena',
     where_met: 'WIP hackathon',
     talked_about:
       'AI tools for productivity, she is building a B2B SaaS for legal teams, we collaborated on the pitch deck',
@@ -60,7 +60,7 @@ const samples = [
     intent: 'connection' as Intent,
   },
   {
-    name: 'Jordan Kim',
+    name: 'Sam',
     where_met: 'Cornell alumni network event',
     talked_about:
       'Data science career paths, transitioning from analytics to ML engineering, his work at Netflix on recommendation systems',
@@ -71,7 +71,7 @@ const samples = [
     intent: 'mentorship' as Intent,
   },
   {
-    name: 'Aisha Thompson',
+    name: 'Zara',
     where_met: 'Women in Tech meetup',
     talked_about:
       'Navigating salary negotiations as a woman in tech, her work on fintech products at Plaid, building in public',
@@ -178,7 +178,7 @@ export default function ContactForm({ onSubmit, loading }: ContactFormProps) {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Sarah Chen"
+                  placeholder="e.g. Maya"
                   className={inputClass}
                   style={inputStyle}
                 />

@@ -52,7 +52,7 @@ const demoContacts: {
   last_contact_days_ago: number
 }[] = [
   {
-    name: 'Alex Rivera',
+    name: 'Chris',
     role: 'VP Engineering',
     company: 'Notion',
     where_met: 'Tech conference',
@@ -63,7 +63,7 @@ const demoContacts: {
     last_contact_days_ago: 45,
   },
   {
-    name: 'Jamie Lee',
+    name: 'Morgan',
     role: 'Product Lead',
     company: 'Figma',
     where_met: 'Dribbble meetup',
@@ -75,7 +75,7 @@ const demoContacts: {
     last_contact_days_ago: 52,
   },
   {
-    name: 'David Park',
+    name: 'Ravi',
     role: 'Founder',
     company: 'Zerve AI',
     where_met: 'HackerEarth hackathon',
@@ -86,7 +86,7 @@ const demoContacts: {
     last_contact_days_ago: 60,
   },
   {
-    name: 'Meera Nair',
+    name: 'Isla',
     role: 'Data Scientist',
     company: 'Spotify',
     where_met: 'LinkedIn message',
@@ -98,7 +98,7 @@ const demoContacts: {
     last_contact_days_ago: 41,
   },
   {
-    name: 'Carlos Mendez',
+    name: 'Teo',
     role: 'GTM Engineer',
     company: 'Rippling',
     where_met: 'Forward Deployed Engineer event',
@@ -109,7 +109,7 @@ const demoContacts: {
     last_contact_days_ago: 18,
   },
   {
-    name: 'Sophie Turner',
+    name: 'Dana',
     role: 'PM Manager',
     company: 'Airbnb',
     where_met: 'Women in Product conference',
@@ -120,7 +120,7 @@ const demoContacts: {
     last_contact_days_ago: 22,
   },
   {
-    name: 'Raj Sharma',
+    name: 'Kiran',
     role: 'Senior SWE',
     company: 'JP Morgan Chase',
     where_met: 'Code for Good event',
@@ -131,7 +131,7 @@ const demoContacts: {
     last_contact_days_ago: 16,
   },
   {
-    name: 'Nina Kovacs',
+    name: 'Petra',
     role: 'Venture Associate',
     company: 'Sequoia',
     where_met: 'Startup networking dinner',
@@ -143,7 +143,7 @@ const demoContacts: {
     last_contact_days_ago: 24,
   },
   {
-    name: 'Ananya Krishnan',
+    name: 'Amara',
     role: 'Product Manager',
     company: 'Spring Health',
     where_met: 'Coffee chat via mutual friend',
@@ -155,7 +155,7 @@ const demoContacts: {
     last_contact_days_ago: 2,
   },
   {
-    name: 'Tyler Brooks',
+    name: 'Casey',
     role: 'Engineer',
     company: 'PostHog',
     where_met: 'Twitter/X DMs',
@@ -167,7 +167,7 @@ const demoContacts: {
     last_contact_days_ago: 1,
   },
   {
-    name: 'Fatima Al-Hassan',
+    name: 'Nadia',
     role: 'Chief of Staff',
     company: 'Anthropic',
     where_met: 'AI networking event',
@@ -179,7 +179,7 @@ const demoContacts: {
     last_contact_days_ago: 3,
   },
   {
-    name: 'Leo Zhang',
+    name: 'Jules',
     role: 'PM',
     company: 'Arcade',
     where_met: 'Product Hunt launch event',
